@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+ php:
+  build: "/home/user/Compose/devops_module10_compose"
+
+ web:
+  image: "nginx:alpine"
+  volumes: 
+   - ./nginx/dev.conf:/etc/nginx/sites-available/dev.conf
+   - ./nginx/dev.conf:/etc/nginx/sites-enabled/dev.conf
+   - ./www/index.php:/var/www/index.php
+  ports:
+   - "8000:80"
+
+volumes:
+ nginx-data:
